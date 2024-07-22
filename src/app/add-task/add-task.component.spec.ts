@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { AddTaskComponent } from './add-task.component';
 
 describe('AddTaskComponent', () => {
@@ -8,7 +8,8 @@ describe('AddTaskComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddTaskComponent]
+      declarations: [AddTaskComponent],
+      imports: [FormsModule]  // Importa FormsModule aquí para los formularios
     })
     .compileComponents();
     
@@ -20,4 +21,6 @@ describe('AddTaskComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // Aquí puedes agregar más pruebas unitarias específicas para AddTaskComponent
 });
