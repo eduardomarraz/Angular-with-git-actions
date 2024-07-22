@@ -15,14 +15,17 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests
-      run: npm test
+    - name: Run unit tests
+      run: ng test --watch=false
 
     - name: Build project
-      run: npm run build
+      run: ng build --prod
 
     - name: Deploy to S3
       env:
@@ -32,4 +35,4 @@ jobs:
         AWS_REGION: 'us-east-1'
         S3_BUCKET: 'autopistaespacial'
       run: |
-        aws s3 sync ./dist s3://$S3_BUCKET --region $AWS_REGION
+        aws s3 sync ./dist/ s3://$S3_BUCKET --region $AWS_REGION
